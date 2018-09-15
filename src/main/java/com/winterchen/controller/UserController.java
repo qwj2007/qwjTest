@@ -5,13 +5,20 @@ import com.winterchen.model.City;
 import com.winterchen.model.Teachers;
 import com.winterchen.service.teacher.ITeacherService;
 import com.winterchen.service.world.ICityService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @Controller
 @RequestMapping(value = "/user")
 public class UserController {
+    private Logger logger = LoggerFactory.getLogger(getClass());
     @Autowired
     private ITeacherService teacherService;
     @Autowired
@@ -75,4 +82,21 @@ public class UserController {
                     int pageSize) {
         return userService.findAllUser(pageNum, pageSize);
     }*/
+
+
+@RequestMapping(value = "/GetUserName", method = { RequestMethod.GET, RequestMethod.POST }, produces = {
+        "application/json;charset=UTF-8" })
+
+    public String GetUserName(ModelMap map, HttpServletRequest request, HttpServletResponse response)
+    {
+        map.put("username","张三");
+        return "User/user";
+    }
+    @RequestMapping(value = "/Va", method = { RequestMethod.GET, RequestMethod.POST }, produces = {
+            "application/json;charset=UTF-8" })
+    @ResponseBody
+    public String getV()
+    {
+        return "dfdfdfdfd";
+    }
 }

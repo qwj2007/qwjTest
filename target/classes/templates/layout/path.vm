@@ -1,0 +1,7 @@
+#set($CONTEXT_PATH = ${request.getContextPath()})
+#set($STATIC_PATH = "http://static.qcdqcdn.com")
+#set($JS_PATH = ${STATIC_PATH}+'/js')
+#set($IMG_PATH = ${STATIC_PATH}+'/img')
+#set($CSS_PATH = ${STATIC_PATH}+'/css')
+#set($JS_LOCAL = ${CONTEXT_PATH}+'/js')
+#set($DEFAULT_IMG = "http://static.qcdqcdn.com/img/noImg.png")
