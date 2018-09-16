@@ -6,6 +6,12 @@
       "sourceType": "com.winterchen.mybatis.MybatisProperties"
     },
     {
+      "name": "spring.datasource.right",
+      "type": "javax.sql.DataSource",
+      "sourceType": "com.winterchen.config.dbconfig.RightDBConfig",
+      "sourceMethod": "datasourceRead()"
+    },
+    {
       "name": "spring.datasource.school",
       "type": "javax.sql.DataSource",
       "sourceType": "com.winterchen.config.dbconfig.SchoolDbConfig",

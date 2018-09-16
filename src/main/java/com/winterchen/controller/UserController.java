@@ -3,6 +3,8 @@ package com.winterchen.controller;
 
 import com.winterchen.model.City;
 import com.winterchen.model.Teachers;
+import com.winterchen.model.Userinfo;
+import com.winterchen.service.right.IUserInfoService;
 import com.winterchen.service.teacher.ITeacherService;
 import com.winterchen.service.world.ICityService;
 import org.slf4j.Logger;
@@ -23,6 +25,8 @@ public class UserController {
     private ITeacherService teacherService;
     @Autowired
     private ICityService cityService;
+    @Autowired
+    private IUserInfoService userInfoService;
     @ResponseBody
     @RequestMapping(value="/addTeacher",method = {RequestMethod.GET,RequestMethod.POST})
     public int addTeaher(@RequestParam(value = "name", required = true) String name,
@@ -62,26 +66,7 @@ public class UserController {
         return 0;
     }
 
-    @RequestMapping("/hello")
-    @ResponseBody
-    public String addUser() {
-        return "hello";
-    }
-    /*@ResponseBody
-    @PostMapping("/add")
-    public int addUser(UserDomain user) {
-        return userService.addUser(user);
-    }
 
-    @ResponseBody
-    @GetMapping("/all")
-    public Object findAllUser(
-            @RequestParam(name = "pageNum", required = false, defaultValue = "1")
-                    int pageNum,
-            @RequestParam(name = "pageSize", required = false, defaultValue = "10")
-                    int pageSize) {
-        return userService.findAllUser(pageNum, pageSize);
-    }*/
 
 
 @RequestMapping(value = "/GetUserName", method = { RequestMethod.GET, RequestMethod.POST }, produces = {
@@ -99,4 +84,24 @@ public class UserController {
     {
         return "dfdfdfdfd";
     }
+
+    @RequestMapping(value = "/insert", method = { RequestMethod.GET, RequestMethod.POST }, produces = {
+            "application/json;charset=UTF-8" })
+    @ResponseBody
+public String addUserInfo()
+{
+    Userinfo model=new Userinfo();
+    model.setUsercode("8989898989");
+    model.setIsdeleted(0);
+   model.setUsername("张三");
+   model.setPwd("111111");
+ int i=  userInfoService.addUserInfo(model);
+ if(i>0)
+ {
+     return "插入成功";
+ }
+ else {
+     return "插入失败";
+ }
+}
 }

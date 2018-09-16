@@ -1,5 +1,6 @@
-<div class="layui-side layui-side-menu">
+<div class="layui-side layui-side-menu layui-bg-black">
     <div class="layui-side-scroll">
+      <div class="layui-logo" lay-href=""> <span>开发框架</span> </div>
         <ul class="layui-nav layui-nav-tree" lay-shrink="all" id="LAY-system-side-menu"
             lay-filter="layadmin-system-side-menu">
             <li data-name="" data-jump="" class="layui-nav-item"><a href="javascript:;" lay-tips="主页" lay-direction="2">
