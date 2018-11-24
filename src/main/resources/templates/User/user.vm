@@ -9,11 +9,9 @@
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
     #parse("layout/header.vm")
-#parse("layout/leftmenu.vm")
+   #parse("layout/leftmenu.vm")
    #parse("User/usermanager.vm")
-    #parse("layout/footer.vm")
-
-
+   #parse("layout/footer.vm")
 </div>
 <script src="../layui/layui.js"></script>
 <script>
