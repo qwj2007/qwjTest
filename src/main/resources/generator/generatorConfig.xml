@@ -18,7 +18,7 @@
         </commentGenerator>
         <!--数据库链接URL，用户名、密码 -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/school?characterEncoding=utf8&amp;useSSL=false&amp;allowMultiQueries=true" userId="root"
+                        connectionURL="jdbc:mysql://localhost:3306/right?characterEncoding=utf8&amp;useSSL=false&amp;allowMultiQueries=true" userId="root"
                         password="root">
         </jdbcConnection>
 
@@ -39,7 +39,7 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
         <!-- 要生成的表 tableName是数据库中的表名或视图名 domainObjectName是实体类名-->
-        <table tableName="teacher" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+        <table tableName="userinfo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
                enableSelectByExample="false" selectByExampleQueryId="false">
             <generatedKey column="ID" sqlStatement="MySql" identity="true"/>
         </table>

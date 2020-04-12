@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.winterchen.dao.right.UserinfoMapper" >
+  <resultMap id="BaseResultMap" type="com.winterchen.model.Userinfo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="usercode" property="usercode" jdbcType="VARCHAR" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="isdeleted" property="isdeleted" jdbcType="INTEGER" />
+    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="pwd" property="pwd" jdbcType="VARCHAR" />
+    <result column="updatetime" property="updatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, usercode, username, isdeleted, createtime, pwd, updatetime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from userinfo
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from userinfo
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.winterchen.model.Userinfo" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into userinfo (usercode, username, isdeleted, 
+      createtime, pwd, updatetime
+      )
+    values (#{usercode,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{isdeleted,jdbcType=INTEGER}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{pwd,jdbcType=VARCHAR}, #{updatetime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.winterchen.model.Userinfo" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into userinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="usercode != null" >
+        usercode,
+      </if>
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="isdeleted != null" >
+        isdeleted,
+      </if>
+      <if test="createtime != null" >
+        createtime,
+      </if>
+      <if test="pwd != null" >
+        pwd,
+      </if>
+      <if test="updatetime != null" >
+        updatetime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="usercode != null" >
+        #{usercode,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="isdeleted != null" >
+        #{isdeleted,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pwd != null" >
+        #{pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.winterchen.model.Userinfo" >
+    update userinfo
+    <set >
+      <if test="usercode != null" >
+        usercode = #{usercode,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="isdeleted != null" >
+        isdeleted = #{isdeleted,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pwd != null" >
+        pwd = #{pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.winterchen.model.Userinfo" >
+    update userinfo
+    set usercode = #{usercode,jdbcType=VARCHAR},
+      username = #{username,jdbcType=VARCHAR},
+      isdeleted = #{isdeleted,jdbcType=INTEGER},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      pwd = #{pwd,jdbcType=VARCHAR},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

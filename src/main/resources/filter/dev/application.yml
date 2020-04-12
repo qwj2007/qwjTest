@@ -2,6 +2,28 @@ spring:
   application:
     name: winterchen
   datasource:
+      right:
+          url: jdbc:mysql://127.0.0.1:3306/right?characterEncoding=utf8&useSSL=false
+          username: root
+          password: root
+          type: com.alibaba.druid.pool.DruidDataSource
+          driver-class-name: com.mysql.jdbc.Driver
+          filters: stat
+          maxActive: 200
+          initialSize: 50
+          maxWait: 10000
+          minIdle: 20
+          logAbandoned: false
+          timeBetweenEvictionRunsMillis: 60000
+          minEvictableIdleTimeMillis: 300000
+          validationQuery: select 'x'
+          testWhileIdle: true
+          testOnBorrow: false
+          testOnReturn: false
+          poolPreparedStatements: true
+          maxOpenPreparedStatements: 20
+          removeAbandoned: true
+          removeAbandonedTimeout: 1800
       teacher:
         url: jdbc:mysql://127.0.0.1:3306/teacher?characterEncoding=utf8&useSSL=false
         username: root
@@ -109,7 +131,6 @@ eureka:
       enable: true
     registryFetchIntervalSeconds: 30
     serviceUrl:
-       #defaultZone: http://192.168.3.133:11100/eureka/
       defaultZone: http://127.0.0.1:7999/eureka/,http://127.0.0.1:7998/eureka/
   instance:
     lease-expiration-duration-in-seconds: 90

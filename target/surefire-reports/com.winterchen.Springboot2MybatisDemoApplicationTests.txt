@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.winterchen.Springboot2MybatisDemoApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 28.478 sec - in com.winterchen.Springboot2MybatisDemoApplicationTests
