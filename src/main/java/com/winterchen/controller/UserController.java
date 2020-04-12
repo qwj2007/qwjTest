@@ -1,8 +1,10 @@
 package com.winterchen.controller;
 
 
+import com.winterchen.constant.MQConstant;
 import com.winterchen.model.City;
 import com.winterchen.model.Teachers;
+import com.winterchen.service.rabbitmq.IMessageQueueService;
 import com.winterchen.service.teacher.ITeacherService;
 import com.winterchen.service.world.ICityService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,8 @@ public class UserController {
     private ITeacherService teacherService;
     @Autowired
     private ICityService cityService;
+    @Autowired
+    private IMessageQueueService messageQueueService;
     @ResponseBody
     @RequestMapping(value="/addTeacher",method = {RequestMethod.GET,RequestMethod.POST})
     public int addTeaher(@RequestParam(value = "name", required = true) String name,
@@ -32,6 +36,7 @@ public class UserController {
         }
        return  0;
     }
+
 
     @ResponseBody
     @RequestMapping(value="/addCity",method = {RequestMethod.GET,RequestMethod.POST})

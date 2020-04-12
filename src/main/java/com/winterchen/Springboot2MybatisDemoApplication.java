@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class})
 @ComponentScan(basePackages = {"com.winterchen"})
-@EnableDiscoveryClient
+//@EnableDiscoveryClient
 public class Springboot2MybatisDemoApplication extends SpringBootServletInitializer {
 	public static void main(String[] args) {
 		SpringApplication.run(Springboot2MybatisDemoApplication.class, args);

@@ -2,9 +2,11 @@ package com.winterchen.dao.teacher;
 
 import com.winterchen.config.dbconfig.UseDatasourceRead;
 import com.winterchen.model.Teachers;
+import org.apache.ibatis.annotations.Mapper;
 
 
 @UseDatasourceRead
+@Mapper
 public interface TeachersMapper {
     int deleteByPrimaryKey(Integer id);
 

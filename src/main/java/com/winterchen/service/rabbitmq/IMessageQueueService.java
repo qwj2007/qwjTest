@@ -2,36 +2,38 @@ package com.winterchen.service.rabbitmq;
 
 public interface IMessageQueueService {
     /**
-     * excahnge:交换机名称
-     * queueName:队列名称
-     * message:发送消息
-    * */
-    void send(String queueName, String message);
+     * 发送消息到队列
+     * @param queue 队列名称
+     * @param message 消息内容
+     */
+     void send( String queueName, String message);
+
+    /**
+     * 发送消息到队列
+     * @param queue 队列名称
+     * @param message 消息内容
+     */
+     void send(String exchange,String queueName,String message);
 
     /**
      * 延迟发送消息到队列
-     * @param queue 队列名称
-     * @param message 消息内容
-     * @param times 延迟时间 单位毫秒
+     * @param deadQueueName 死信队列名称
+     * @param businessQueueName 业务队列名称
+     * @param businessQueueExchange 业务队列交换机名称
+     * @param msg 发送的消息
+     * @param times 消息过期时间
      */
-     void send(String queueName, String message, long times);
+     void send(String deadQueueName,String businessQueueName,String businessQueueExchange, String msg, long times);
 
     /**
      * 延迟发送消息到队列
-     *  @param dealQueueName 死消息队列名称
-     * @param queue 队列名称
-     * @param message 消息内容
-     * @param times 延迟时间 单位毫秒
+     * @param businessQueueName 业务队列名称
+     * @param message 发送的消息
+     * @param times 消息过期时间
      */
-    void send(String dealQueueName, String queueName, String message, long times);
+     void send( String businessQueueName, String message, long times);
 
-    /**
-     * 延迟发送消息到队列
-     *  @param exchange 交换机
-     *  @param dealQueueName 死消息队列名称
-     * @param queue 队列名称
-     * @param message 消息内容
-     * @param times 延迟时间 单位毫秒
-     */
-    void send(String exchange, String dealQueueName, String queueName, String message, long times);
+
+
+
 }
