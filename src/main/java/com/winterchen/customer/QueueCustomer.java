@@ -1,4 +1,4 @@
-package com.winterchen.service.rabbitmq;
+package com.winterchen.customer;
 
 import com.winterchen.constant.MQConstant;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @Component
 //消息队列消费
 public class QueueCustomer {
-     /*
+
     @RabbitListener(queues = MQConstant.TEST_QUEUE_NAME)
     @RabbitHandler
     public void process(String body) {
@@ -26,19 +26,19 @@ public class QueueCustomer {
         System.out.println(bod+" 第二个方法");
     }
 
-    @RabbitListener(queues = MQConstant.TEST_QUEUE_NAME)
+    @RabbitListener(queues = MQConstant.TEST_DEAD_QUEUE_NAME)
     @RabbitHandler
     public void process2(String body) {
         String bod=body;
-        System.out.println(bod+" 第三个方法");
+        System.out.println(bod+" 私信队列第一个方法");
     }
-    @RabbitListener(queues = MQConstant.TEST_QUEUE_NAME)
+    @RabbitListener(queues = MQConstant.TEST_DEAD_QUEUE_NAME)
     @RabbitHandler
     public void process3(String body) {
         String bod=body;
-        System.out.println(bod+" 第四个方法");
+        System.out.println(bod+" 私信队列第二个方法");
     }
-
+/*
     @RabbitListener(queues = "dead")
     @RabbitHandler
     public void processDeadQueue(String body) {
