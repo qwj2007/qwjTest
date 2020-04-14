@@ -1,13 +1,17 @@
 package com.winterchen.config.mqconfig;
 
 import com.winterchen.constant.MQConstant;
-import org.springframework.amqp.core.Binding;
-import org.springframework.amqp.core.BindingBuilder;
-import org.springframework.amqp.core.DirectExchange;
-import org.springframework.amqp.core.Queue;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.amqp.core.*;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
 
+import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,6 +22,8 @@ import java.util.Map;
  */
 @Configuration
 public class TestQueueConfiguration {
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
 
 
     /**以下是死信消息队列的定义方法**/
